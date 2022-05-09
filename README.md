@@ -8,7 +8,7 @@ Tecnologias utilizadas:
 - Excel
 
 
-Componentes del Script:
+# Componentes del Script:
 
 Para ejecutar el script se debe tener un webdriver de selenium para que este pueda utilizar un navegador.
 Hay varios exploradores soportados y puedes descargarlo [haciendo click aca](https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/)
@@ -17,7 +17,7 @@ Luego debes actualizar la ruta de 's' en el archivo python por la ruta donde se 
 
 En el repo esta el archivo requirements donde se especifica la version del resto de los componentes necesarios para ejecutar el programa.
 
-Ejecucion del Script:
+# Ejecucion del Script:
 
 Puedes ejecutarlo a traves del PowerShell en un entorno virtual, [aca](https://github.com/bertucci25/Extractor_datos_ML/blob/main/README.md#creando-un-entorno-virtual-virtualenv) esta explicado en mi anterior repo como crear un virtualenv
 
