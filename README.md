@@ -33,5 +33,5 @@ Una vez finalizada la extraccion van a encontrar un archivo .csv en la carpeta d
 
 ![Imagen del archivo](/assets/mydata.png)
 
-# Usando archivo csv como base de datos para excel:
+# Usando archivo csv como base de datos para una hoja de trabajo:
 
