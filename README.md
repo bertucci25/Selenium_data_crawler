@@ -25,3 +25,13 @@ Otra forma de ejecutarlo es a traves de un IDE, como Pycharm, VScode etc y ejecu
 
 Una vez ejecutado te va a pedir el link en la pagina exacta de books.toscrape de la cual quieres extraer los datos, por ej: `http://books.toscrape.com/catalogue/page-2.html` apretamos enter y voila
 
+![gif del bot en ejecucion](/assets/screen-capture.gif)
+<br>
+Muy cool, no? 
+
+Una vez finalizada la extraccion van a encontrar un archivo .csv en la carpeta donde ejecutaron el script
+
+![Imagen del archivo](/assets/mydata.png)
+
+# Usando archivo csv como base de datos para excel:
+
