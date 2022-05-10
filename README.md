@@ -1,5 +1,7 @@
 # Data crawler con Selenium y BS4
 
+nota: este repo lo creé con fines demostrativos para futuros recruiters asi pueden entender que hice con las herramientas.
+
 Programa que obtiene los datos de books.toscrape.com y los almacena en un csv.
 
 Tecnologias utilizadas: 
@@ -35,3 +37,7 @@ Una vez finalizada la extraccion van a encontrar un archivo .csv en la carpeta d
 
 # Usando archivo csv como base de datos para una hoja de trabajo:
 
+Para esto simplemente importé el archivo csv a mi hoja de trabajo desde la pestaña Datos, quedando mas ordenado y clara la informacion
+![imagen excel](/assets/captura_excel.JPG)
+
+De esta manera se puede extraer y llenar bases de datos no solo con la pagina del projecto si no una gran mayoria
