@@ -40,4 +40,4 @@ Una vez finalizada la extraccion van a encontrar un archivo .csv en la carpeta d
 Para esto simplemente importé el archivo csv a mi hoja de trabajo desde la pestaña Datos, quedando mas ordenado y clara la informacion
 ![imagen excel](/assets/captura_excel.JPG)
 
-De esta manera se puede extraer y llenar bases de datos no solo con la pagina del projecto si no una gran mayoria
+De esta manera se puede extraer y llenar bases de datos no solo con la pagina del projecto si no una gran mayoria, espero que haya sido de su agrado el proyecto, ante cualquier duda envien un mensaje a mi discord `illogic#7061`
