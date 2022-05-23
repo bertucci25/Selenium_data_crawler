@@ -35,4 +35,6 @@ Para crear una bdd y agregar los datos del dataframe que obtiene el bot utilizé
 El archivo `db.py` define el diseño de la unica tabla que cree para el proyecto, "Books".<br>
 El archivo `insert_data.py`contiene la funcion que agrega datos a la tabla
 
-al finalizar el programa crea una base de datos y en el todos los datos que fueron extraidos.
+al finalizar el programa crea una base de datos y en el todos los datos que fueron extraidos lista para hacer consultas.
+
+![imagen base de datos](/assets/capturaBDD.JPG)
