@@ -1,13 +1,14 @@
 # Imports BeautifulSoup, selenium y sus componentes
 # Python 3.9
+import db
+from insert_data import save_data
 import pandas as pd
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from sqlalchemy import create_engine
 
 # Configuraciones de Selenium al navegador
 options = Options()
@@ -25,8 +26,10 @@ driver = webdriver.Chrome(service=s, options=options)
 url = input('Danos el link: ')
 driver.get(url)
 
+df = None
 
 def scrape_books():
+    global df
     # bs4 para obtener las etiquetas html de la pagina
     soup = BeautifulSoup(driver.page_source, 'html.parser')
     # Accedo a la lista de los libros en la pagina y los guardo en una variable tipo list()
@@ -43,29 +46,31 @@ def scrape_books():
     # variable para determinar hasta cuando hara el ciclo siguiente
     i = 1
 
-    for _ in books_list:
-        # click a el libro de cada elemento de la lista
-        driver.find_element(by=By.XPATH,
-                            value=f'//*[@id="default"]/div/div/div/div/section/div[2]/ol/li[{i}]/article/h3/a').click()
-        # bs4 obtiene el nuevo html de la pagina
-        soup = BeautifulSoup(driver.page_source, 'html.parser')
-        # Se extraen todos los datos de interes
-        title = soup.find('h1').text.replace(',', ' ')
-        price = soup.find('p', class_='price_color').text
-        stock = soup.find('p', class_='instock availability').text.replace('\n', '').replace(' ', '')
-        # se crea una nueva entrada al dataframe en cada iteracion
-        new_row = {'Title': title, 'Price': price[1:], 'Stock': stock}
-        df = df.append(new_row, ignore_index=True)
-        i += 1
-
-        driver.back()
-        # si llega al maximo de libros en la pagina hace click para ir a la siguiente pagina
-        if i == 20:
-            driver.find_element(by=By.LINK_TEXT, value='next').click()
-
-    # crea un csv para almacenar las entradas, en modo 'a'ppend
-    with open('my_data.csv', 'a', newline='') as f:
-        df.to_csv(f, header=(f.tell() == 0), index=False)
+    while True:
+        next_page_btn = driver.find_elements(by=By.LINK_TEXT, value='next')
+        if len(next_page_btn) < 1:
+            print("no more pages left")
+            break
+        else:
+            for b in books_list:
+            # click a el libro de cada elemento de la lista
+                driver.find_element(by=By.XPATH,
+                                    value=f'//*[@id="default"]/div/div/div/div/section/div[2]/ol/li[{i}]/article/h3/a').click()
+                # bs4 obtiene el nuevo html de la pagina
+                soup = BeautifulSoup(driver.page_source, 'html.parser')
+                # Se extraen todos los datos de interes
+                title = soup.find('h1').text.replace(',', ' ')
+                price = soup.find('p', class_='price_color').text
+                stock = soup.find('p', class_='instock availability').text.replace('\n', '').replace(' ', '')
+                # se crea una nueva entrada al dataframe en cada iteracion
+                new_row = {'Title': title, 'Price': price[1:], 'Stock': stock}
+                df = df.append(new_row, ignore_index=True)
+                i += 1
+                driver.back()
+                if i ==20 and driver.find_element(by=By.LINK_TEXT, value='next'):
+                    driver.find_element(by=By.LINK_TEXT, value='next').click()
+                    i=1
 
 
 scrape_books()
+save_data(df)
