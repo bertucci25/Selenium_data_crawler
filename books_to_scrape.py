@@ -42,7 +42,7 @@ def scrape_books():
         books_list.append(books)
 
     # creamos un dataframe para darle estructura a los datos
-    df = pd.DataFrame(columns=['Title', 'Price', 'Stock'])
+    df = pd.DataFrame(columns=['Title', 'Price', 'Stock', 'Genre', 'UPC'])
     # variable para determinar hasta cuando hara el ciclo siguiente
     i = 1
 
